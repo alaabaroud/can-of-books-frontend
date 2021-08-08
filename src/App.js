@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import Login from './Login';
+// import Login from './Login';
 import Profile from './Profile'
 import BestBooks from './BestBooks'
 // import IsLoadingAndError from './IsLoadingAndError';
@@ -22,7 +22,7 @@ class App extends React.Component {
           {/* <IsLoadingAndError> */}
             <Header />
 
-            <Login/>
+       
 
             
 
@@ -35,10 +35,12 @@ class App extends React.Component {
                 
               </Route>
               <Route exact path="/profile">
-        <Profile />
-      </Route>
+              <Profile />
+              </Route>
 
               {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
+
+
             </Switch>
             <Footer />
           {/* </IsLoadingAndError> */}
