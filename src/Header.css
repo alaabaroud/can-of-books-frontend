@@ -5,3 +5,26 @@ a{
 a:hover{
   color:darkgrey;
 }
+ 
+
+.bg-dark {
+  background-color: #361335!important;
+}
+a {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.Button {
+background-color: rgb(255, 251, 1);
+color: black;
+text-align: center;
+}
+
+body{
+  background-size: 100%;
+}
+
+
+
+
