@@ -9,7 +9,8 @@ import './Header.css';
 class Header extends React.Component {
   render() {
     return(
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <div className='header'>
+      <Navbar  collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand>My Favorite Books</Navbar.Brand>
         <Link to="/">Home</Link>
         <Link to="/profile">Profile</Link>
@@ -17,7 +18,7 @@ class Header extends React.Component {
         <Login/>
         <Logout/>
       </Navbar>
-
+      </div>
     );
   }
 }
