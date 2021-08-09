@@ -10,7 +10,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-
+// import Books from './Books';
 
 class App extends React.Component {
 
@@ -37,6 +37,10 @@ class App extends React.Component {
               <Route exact path="/profile">
               <Profile />
               </Route>
+
+              {/* <Route exact path="/books">
+              <Books />
+              </Route> */}
 
               {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
 
