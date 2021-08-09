@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { withAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
+import Books from './Books'
 import './BestBooks.css';
 
 
@@ -12,6 +13,28 @@ class MyFavoriteBooks extends React.Component {
       this.state={
         book:[],
       }
+    }
+
+     renderBooks=async()=>{
+      // const{user}=this.props.auth0;
+      // console.log(user);
+      try{
+        // let url=`http://localhost:3003/book?email=obadanaser135@gmail.com`;
+        let url=`http://localhost:3030/book?email=obadanaser135@gmail.com`
+
+        let data= await axios.get(url);
+        this.setState({
+          book:data.data
+        })
+      }
+      catch(error){
+        if(error.response && error.response.data)
+        console.log('error');
+      }
+    } 
+
+    componentDidMount=()=>{
+      this.renderBooks();
     }
 
 
@@ -32,7 +55,8 @@ class MyFavoriteBooks extends React.Component {
           
           This is a collection of my favorite books
         </p>
-        
+        <Books arr={this.state.book}/>
+
       </>}
       </Jumbotron>
     )
