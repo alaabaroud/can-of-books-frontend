@@ -16,11 +16,11 @@ class MyFavoriteBooks extends React.Component {
     }
 
      renderBooks=async()=>{
-      // const{user}=this.props.auth0;
-      // console.log(user);
+      const{user}=this.props.auth0;
+      console.log(user);
       try{
-        // let url=`http://localhost:3003/book?email=obadanaser135@gmail.com`;
-        let url=`http://localhost:3030/book?email=obadanaser135@gmail.com`
+        let url=`http://localhost:3003/book?email=${user.email}`;
+        
 
         let data= await axios.get(url);
         this.setState({
