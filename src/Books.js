@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
+import CardColumns from "react-bootstrap/CardColumns";
 import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem"
 // import axios from 'axios';
@@ -8,9 +9,10 @@ import ListGroupItem from "react-bootstrap/ListGroupItem"
 class Books extends React.Component {
   render() {
     return (
-
-this.props.arr && this.props.arr.map((item,index)=>{
-    return(
+    <>
+<CardColumns>{
+this.props.arr.map((item,index)=>{
+  return(
         <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
         <Card.Body>
@@ -25,8 +27,11 @@ this.props.arr && this.props.arr.map((item,index)=>{
         </ListGroup>
         
       </Card>
-    )
+  )
 })
+  }
+</CardColumns>
+</>
     );
   }
 }
