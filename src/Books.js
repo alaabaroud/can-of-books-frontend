@@ -11,19 +11,19 @@ class Books extends React.Component {
     return (
     <>
 <CardColumns>{
-this.props.arr.map((item)=>{
+this.props.arr.map((item,index)=>{
   return(
         <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
         <Card.Body>
-          <Card.Title>{item.arr.title}</Card.Title>
+          <Card.Title>{item.title}</Card.Title>
          
           <Card.Text>
-          {/* {item.book[].description} */}
+          {item.description}
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          {/* <ListGroupItem> {item.book.status}</ListGroupItem> */}
+          <ListGroupItem> {item.status}</ListGroupItem>
         
         </ListGroup>
         
