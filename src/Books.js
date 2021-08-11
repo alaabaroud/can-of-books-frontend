@@ -14,7 +14,7 @@ class Books extends React.Component {
 this.props.arr.map((item,index)=>{
   return(
         <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+        <Card.Img variant="top" src={item.image} />
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
          
