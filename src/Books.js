@@ -4,25 +4,26 @@ import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/CardColumns";
 import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem"
-// import axios from 'axios';
+
 
 class Books extends React.Component {
   render() {
     return (
     <>
 <CardColumns>{
-this.props.arr.map((item,index)=>{
+this.props.arr.map((item)=>{
   return(
         <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
         <Card.Body>
-          <Card.Title>{item.book[index].title}</Card.Title>
+          <Card.Title>{item.arr.title}</Card.Title>
+         
           <Card.Text>
-          {item.book[index].description}
+          {/* {item.book[].description} */}
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroupItem> {item.book[index].status}</ListGroupItem>
+          {/* <ListGroupItem> {item.book.status}</ListGroupItem> */}
         
         </ListGroup>
         
@@ -31,6 +32,7 @@ this.props.arr.map((item,index)=>{
 })
   }
 </CardColumns>
+
 </>
     );
   }
