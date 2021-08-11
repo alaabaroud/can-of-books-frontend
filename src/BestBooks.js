@@ -26,6 +26,7 @@ class MyFavoriteBooks extends React.Component {
         this.setState({
           book:data.data
         })
+        console.log(data.data);
       }
       catch(error){
         if(error.response && error.response.data)
@@ -52,6 +53,7 @@ class MyFavoriteBooks extends React.Component {
            <> 
         <h1>My Favorite Books</h1>
         <p>
+          
           
           This is a collection of my favorite books
         </p>
