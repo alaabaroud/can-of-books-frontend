@@ -5,6 +5,7 @@ import { withAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import Books from './Books';
 import './BestBooks.css';
+import BookFormModal from './BookFormModal'
 
 
 class MyFavoriteBooks extends React.Component {
@@ -12,6 +13,9 @@ class MyFavoriteBooks extends React.Component {
       super(props)
       this.state={
         book:[],
+        email : '',
+        // showBooksComponent:false
+
       }
     }
 
@@ -38,7 +42,35 @@ class MyFavoriteBooks extends React.Component {
       this.renderBooks();
     }
 
-
+   
+    addBook = (event) => {
+      event.preventDefault();
+        const title = event.target.title.value;
+         const description = event.target.description.value;
+         const status = event.target.status.value
+        
+         
+  
+      const BookForm = {
+        title:title,
+      description:description,
+           status:status
+      }
+  
+      axios
+      .post(`${this.state.server}/addBook`, BookForm)
+      .then( data => {
+        console.log(data.data);
+        this.setState({
+          book : data.data
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      console.log(event.target.title.value);
+    }
+    
 
   render() {
 
@@ -58,6 +90,9 @@ class MyFavoriteBooks extends React.Component {
           This is a collection of my favorite books
         </p>
         <Books arr={this.state.book}/>
+        <BookFormModal
+        addBook={this.addBook}
+        />
      
 
       </>}
