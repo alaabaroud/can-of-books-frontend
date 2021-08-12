@@ -14,6 +14,7 @@ class MyFavoriteBooks extends React.Component {
       this.state={
         book:[],
         email : '',
+        // server: process.env.REACT_APP_SERVER_URL
         // showBooksComponent:false
 
       }
@@ -21,7 +22,7 @@ class MyFavoriteBooks extends React.Component {
 
      renderBooks=async()=>{
       const{user}=this.props.auth0;
-      console.log(user);
+      console.log(user.email);
       try{
         let url=`http://localhost:3001/book?email=${user.email}`;
         
@@ -43,33 +44,59 @@ class MyFavoriteBooks extends React.Component {
     }
 
    
-    addBook = (event) => {
+     addBook = async (event) => {
       event.preventDefault();
+
         const title = event.target.title.value;
          const description = event.target.description.value;
          const status = event.target.status.value
+        //  const email = event.target.email.value
+
         
          
   
-      const BookForm = {
+      const bookForm = {
+
         title:title,
       description:description,
-           status:status
+           status:status,
+          //  email: this.state.email
+           
+           
       }
-  
-      axios
-      .post(`${this.state.server}/addBook`, BookForm)
-      .then( data => {
-        console.log(data.data);
-        this.setState({
-          book : data.data
-        })
-      })
-      .catch(err => {
-        console.log(err);
-      })
-      console.log(event.target.title.value);
+      // console.log(this.state.email);
+
+      const options = {
+        mode: 'cors',
+        cache: 'no-cache',
+        headers: { 'Content-Type': 'application/json' },
+      };
+      await axios.post('http://localhost:3001/add', JSON.stringify(bookForm), options).catch(console.error);
+      console.log(bookForm);
+     
+    //   // let URL=`http://localhost:3001`;
+    //  await  axios({
+    //     method: 'post',
+    //     url: 'http://localhost:3001/add',
+    //     data:  bookForm
+        
+    //   })
+    //   // await axios
+    //   // .post(`http://localhost:3001/addbooks`, bookForm)
+    //   .then( data => {
+
+    //     console.log(data);
+    //     this.setState({
+    //       book : data.data
+    //     })
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   })
+    //   console.log(event.target.title.value);
     }
+    
+
     
 
   render() {
