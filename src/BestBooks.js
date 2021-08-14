@@ -7,6 +7,7 @@ import Books from './Books';
 import './BestBooks.css';
 import BookFormModal from './BookFormModal';
 import Button from 'react-bootstrap/Button';
+import DeleteBook from './DeleteBook'
 
 
 class MyFavoriteBooks extends React.Component {
@@ -100,6 +101,33 @@ class MyFavoriteBooks extends React.Component {
       })
       console.log(event.target.title.value);
     }
+
+
+
+    deleteBook = (index) => {
+      const{user}=this.props.auth0;
+      const data = {
+        email :user.email ,
+        // index : index
+      }
+      axios
+      .delete(`http://localhost:3001/books/${index}`,{ params: data })
+      .then(result => {
+        // console.log(result.data)
+        this.setState({
+          cats: result.data
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  
+    }
+  
+ 
+
+
+
     
 
     
@@ -135,6 +163,11 @@ class MyFavoriteBooks extends React.Component {
         addBook={this.addBook}
         />
         }
+        <DeleteBook
+            book={this.state.book}
+            showBooks={this.state.showBooks}
+            deleteBook = {this.deleteBook}
+          />
 
       </>}
       </Jumbotron>
